@@ -59,7 +59,7 @@ void __stdcall Browser::NewWindow3(IDispatch** ppDisp,
   // We potentially use two of those response methods.
   // This will not allow us to handle windows created by the JavaScript
   // showModalDialog function().
-  IWebBrowser2* browser;
+  /*IWebBrowser2* browser;
   LPSTREAM message_payload;
   LRESULT create_result = ::SendMessage(this->executor_handle(),
                                         WD_BROWSER_NEW_WINDOW,
@@ -80,7 +80,17 @@ void __stdcall Browser::NewWindow3(IDispatch** ppDisp,
   HRESULT hr = ::CoGetInterfaceAndReleaseStream(message_payload,
                                                 IID_IWebBrowser2,
                                                 reinterpret_cast<void**>(&browser));
-  *ppDisp = browser;
+  *ppDisp = browser;*/
+  /*http://msdn.microsoft.com/en-us/library/aa752093%28v=vs.85%29.aspx*/
+  /*http://msdn.microsoft.com/en-us/library/aa768360(v=vs.85).aspx*/
+  *pbCancel = VARIANT_TRUE;
+  VARIANT vEmpty;
+  VariantInit(&vEmpty);
+  /*VARIANT vFlags;
+  V_VT(&vFlags) = VT_I4;
+  V_I4(&vFlags) = navVirtualTab;*/
+  this->browser_->Navigate(bstrUrl, &vEmpty, &vEmpty, &vEmpty, &vEmpty);
+  //*ppDisp = this->browser_;
 }
 
 void __stdcall Browser::DocumentComplete(IDispatch* pDisp, VARIANT* URL) {
