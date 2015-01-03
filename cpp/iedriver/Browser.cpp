@@ -90,7 +90,7 @@ void __stdcall Browser::NewWindow3(IDispatch** ppDisp,
   V_VT(&vFlags) = VT_I4;
   V_I4(&vFlags) = navVirtualTab;*/
   this->browser_->Navigate(bstrUrl, &vEmpty, &vEmpty, &vEmpty, &vEmpty);
-  //*ppDisp = this->browser_;
+  *ppDisp = this->browser_;
 }
 
 void __stdcall Browser::DocumentComplete(IDispatch* pDisp, VARIANT* URL) {
