@@ -86,10 +86,10 @@ void __stdcall Browser::NewWindow3(IDispatch** ppDisp,
   *pbCancel = VARIANT_TRUE;
   VARIANT vEmpty;
   VariantInit(&vEmpty);
-  /*VARIANT vFlags;
+  VARIANT vFlags;
   V_VT(&vFlags) = VT_I4;
-  V_I4(&vFlags) = navVirtualTab;*/
-  this->browser_->Navigate(bstrUrl, &vEmpty, &vEmpty, &vEmpty, &vEmpty);
+  V_I4(&vFlags) = navOpenInNewTab;
+  this->browser_->Navigate(bstrUrl, &vFlags, &vEmpty, &vEmpty, &vEmpty);
   //*ppDisp = this->browser_;
 }
 
