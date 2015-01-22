@@ -38,9 +38,12 @@ java_library(name = 'webdriven',
   ],
   visibility = [
     '//java/client/src/com/thoughtworks/selenium/...',
+    '//java/client/test/com/thoughtworks/selenium/...',
     '//java/client/test/org/openqa/selenium/v1:tests',
     '//java/client/test/org/openqa/selenium/v1/internal/seleniumemulation:LargeTests',
     '//java/client/test/org/openqa/selenium/v1/internal/seleniumemulation:tests',
+    '//java/server/src/org/openqa/grid/selenium:classes',
+    '//java/server/src/org/openqa/selenium/server:server',
   ],
 )
 
@@ -60,6 +63,7 @@ java_library(name = 'emulation-api',
   ],
   visibility = [
     '//java/client/src/com/thoughtworks/selenium/...',
+    '//java/client/test/com/thoughtworks/selenium/...',
     '//java/client/test/org/openqa/selenium/v1/internal/seleniumemulation:tests',
   ],
 )

@@ -18,9 +18,7 @@ java_library(
   srcs = [
     'internal/Base64Encoder.java',
   ],
-  visibility = [
-    '//java/client/src/org/openqa/selenium/io:io',
-  ],
+  visibility = ['PUBLIC'],
 )
 
 java_library(name = 'core',
@@ -42,7 +40,6 @@ java_library(name = 'core',
     'UnexpectedAlertBehaviour.java',
     'WebDriver.java',
     'WebElement.java',
-    'internal/Base64Encoder.java',
     'internal/Killable.java',
     'internal/Locatable.java',
     'internal/Lock.java',
@@ -51,10 +48,12 @@ java_library(name = 'core',
     'internal/WrapsElement.java',
   ] + glob([
      'html5/*.java',
-     'internal/FindsBy*.java'
+     'internal/FindsBy*.java',
+     'mobile/*.java',
   ]),
   deps = [
     ':beta',
+    ':codecs',
     ':exceptions',
     ':platform',
     ':primitives',
@@ -121,5 +120,19 @@ java_library(name = 'primitives',
   ],
   visibility = [
     '//java/client/src/org/openqa/selenium/interactions:core',
+  ],
+)
+
+java_binary(name = 'selenium-java',
+  deps = [
+    ':webdriver-api',
+    '//java/client/src/org/openqa/selenium/htmlunit:htmlunit',
+    '//java/client/src/org/openqa/selenium/ie:ie',
+    '//java/client/src/org/openqa/selenium/chrome:chrome',
+    '//java/client/src/org/openqa/selenium/firefox:firefox',
+    '//java/client/src/org/openqa/selenium/lift:lift',
+    '//java/client/src/org/openqa/selenium/remote:remote',
+    '//java/client/src/org/openqa/selenium/safari:safari',
+    '//java/client/src/org/openqa/selenium/support:support',
   ],
 )

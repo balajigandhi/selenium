@@ -205,7 +205,7 @@ promise.Thenable.IMPLEMENTED_BY_PROP_ = '$webdriver_Thenable';
  * instances of that class implement the Thenable interface. This function will
  * also ensure the prototype's {@code then} function is exported from compiled
  * code.
- * @param {function(new: promise.Thenable, ...[?])} ctor The
+ * @param {function(new: promise.Thenable, ...?)} ctor The
  *     constructor whose prototype to modify.
  */
 promise.Thenable.addImplementation = function(ctor) {
@@ -594,7 +594,7 @@ promise.Deferred.prototype.thenCatch = function(opt_eb) {
  * @deprecated Use {@code thenFinally} from the promise property directly.
  */
 promise.Deferred.prototype.thenFinally = function(opt_cb) {
-  this.promise.thenFinally(opt_cb);
+  return this.promise.thenFinally(opt_cb);
 };
 
 
